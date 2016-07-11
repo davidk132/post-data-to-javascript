@@ -2,7 +2,7 @@
 
   'use strict';
 
-  $(document).ready(function(){
+  $( document ).ready( function(){
 
     var template = "";
     if ( $.isEmptyObject( postData ) ) {
@@ -18,6 +18,7 @@
     // HTML must have `<div id="postdata"></div>` where the data will go
     // Alternately, assign any existing tag with the id `postdata`.
 
-    $('#postdata').html(template);
+    $( '#postdata' ).html( template );
   });
+
 } )( jQuery, postData || {} ); // If no post data, default is an empty object

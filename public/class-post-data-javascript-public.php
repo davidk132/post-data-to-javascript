@@ -120,15 +120,8 @@ class Post_Data_Javascript_Public {
 		 $post_type = get_post_type();
 		 if ( $post_type === get_option( $this->option_name . '_posttype_' . $post_type ) ) :
 
-			/**
-			 * This is the default enqueue action for this boilerplate.
-			 * @link    http://wppb.io/
-			 * @see     wp_enqueue_script
-			 * wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/post-data-javascript-public.js', array( 'jquery' ), $this->version, false );
-	     */
-
 			 /**
-	 		 * Enqueues JS file with localize script to send post data.
+	 		 * Enqueues JS file with jQuery to send post data.
 			 *
 			 * Hooked into `wp_enqueue_scripts` to load the script and localize it with post data
 			 * if the current post type is permitted from the admin settings menu
@@ -137,13 +130,10 @@ class Post_Data_Javascript_Public {
 	 		 * @see      wp_enqueue_script
 			 * @see      wp_localize_script
 	 		 * @since    1.0.0
-	 		 * wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/post-data-javascript-public.js', array( 'jquery' ), $this->version, false );
-	      */
-			 wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/post-data-javascript.js', array( 'jquery' ), $this->version, false );
-
+       */
 			 $params = $this->get_params( $post );
-
-			 wp_localize_script( $this->plugin_name, 'postData', $params );
+       wp_enqueue_script( 'jquery' );
+			 wp_localize_script( 'jquery', 'postData', $params );
 
 	   endif;
 	}
