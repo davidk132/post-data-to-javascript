@@ -1,7 +1,7 @@
-# Post Type to JavaScript
+# Post Data to JavaScript
 ## WordPress Plugin
 
-Post Type to JavaScript (PDJ) finds custom fields in any post type, converts them into a JavaScript object and puts them on the DOM for any other JavaScript script, library or framework to use. The object lives on the global scope and is namespaced with the object name `postData`.
+Post Data to JavaScript (PDJ) finds custom fields in any post type, converts them into a JavaScript object and puts them on the DOM for any other JavaScript script, library or framework to use. The object lives on the global scope and is namespaced with the object name `postData`.
 
 If compared to a REST API or something that allows full database functions via HTTP (create, read, update, delete), then PDJ may be considered similar to a `GET` function. If you are looking for a more comprehensive API for fully interacting with the database, then this plugin is not for you. Try [WP-API](http://v2.wp-api.org/) instead, or wait until it gets fully integrated into WordPress core.
 
@@ -14,7 +14,7 @@ Install the plugin by cloning this repository or uploading the zip file to your 
 
 After selecting the post types to use, your custom JavaScript files will have access to the `postData` object. See below how the object is built.
 
-One usage suggestion is to write a custom script similar to `post-data-to-javascript-sample.js` that ships with this plugin as an example. Put the following code in your PHP template files to display the JavaScript data:
+One usage suggestion is to write a custom script similar to `post-data-to-javascript-sample.js` that ships as an example with this plugin in the folder `/public/js/`. Put the following code in your PHP template files to display the JavaScript data:
 
 `<div id="postdata"></div>`
 
@@ -40,22 +40,23 @@ When enqueuing your custom script, add jQuery as a dependency with the line `arr
 ### What does my JavaScript Object look like?
 The object looks as follows. Remember that it will be placed on the global scope.
 
-`
+```
 postData: {
   custom_field_one: "value1",
   custom_field_two: "value2",
   custom_field_three: "value3"
 }
-`
+```
 
 ### Feature Wishlist
 These are some features I may add in the future:
 - ability to select which custom fields from each post type will be used
 - ability to specify native fields, such as title, author, content, excerpt, taxonomy
+- ability to set the name of the JavaScript object in order to avoid namespace collisions
 
 
-### Warning
-As this plugin is based on the excellent [WordPress Plugin Boilerplate](http://wppb.io/), it is optimized for performance and safety. Use caution when putting this plugin onto a production site and be sure to follow all recommendations for security and stability.
+### Caution
+As this plugin is based on the excellent [WordPress Plugin Boilerplate](http://wppb.io/), it is optimized for performance and safety. See its documentation for more information. Use caution when putting this plugin onto a production site and be sure to follow all recommendations for security and stability.
 
 Every input from the user and output from the database should be sanitized, validated and escaped as appropriate. Use at your own risk.
 
